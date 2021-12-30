@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_29_023247) do
+ActiveRecord::Schema.define(version: 2021_12_30_012806) do
+
+  create_table "enrollments", force: :cascade do |t|
+    t.float "full_price"
+    t.integer "max_payments"
+    t.integer "due_date"
+    t.string "course_name"
+    t.integer "institution_id", null: false
+    t.integer "student_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["institution_id"], name: "index_enrollments_on_institution_id"
+    t.index ["student_id"], name: "index_enrollments_on_student_id"
+  end
 
   create_table "institutions", force: :cascade do |t|
     t.string "name"
@@ -18,6 +31,16 @@ ActiveRecord::Schema.define(version: 2021_12_29_023247) do
     t.string "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.float "payment_price"
+    t.date "payment_due_date"
+    t.string "status"
+    t.integer "enrollment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["enrollment_id"], name: "index_payments_on_enrollment_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -31,4 +54,7 @@ ActiveRecord::Schema.define(version: 2021_12_29_023247) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "enrollments", "institutions"
+  add_foreign_key "enrollments", "students"
+  add_foreign_key "payments", "enrollments"
 end
