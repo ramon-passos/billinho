@@ -1,5 +1,3 @@
-module API::V1
-  class ApiController < ApplicationControler
+class Api::V1::ApiController < ApplicationController
     #Métodos
-  end
 end
