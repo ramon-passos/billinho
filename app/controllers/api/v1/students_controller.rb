@@ -10,7 +10,7 @@ class Api::V1::StudentsController < Api::V1::ApiController
   end
 
   def create
-    @student = Student.create(
+    @student = Student.create!(
       name: params[:name],
       cpf: params[:cpf],
       birth_day: Date.strptime(params[:birth_day], "%d/%m/%Y"),

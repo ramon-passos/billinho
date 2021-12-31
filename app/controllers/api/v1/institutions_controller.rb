@@ -7,14 +7,13 @@ class Api::V1::InstitutionsController < Api::V1::ApiController
   
   def show
     @institution = Institution.find(params[:id])
-    puts "PARAMS === #{params}"
     render json: @institution
   end
 
   def create
-    @institution = Institution.create(
+    @institution = Institution.create!(
       name: params[:name],
-      cnpj: params[:cnpk],
+      cnpj: params[:cnpj],
       institution_type: params[:institution_type]
     )
     render json: @institution
