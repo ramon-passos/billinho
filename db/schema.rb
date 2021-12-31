@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_30_012806) do
+ActiveRecord::Schema.define(version: 2021_12_30_221302) do
 
   create_table "enrollments", force: :cascade do |t|
     t.float "full_price"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_12_30_012806) do
   create_table "institutions", force: :cascade do |t|
     t.string "name"
     t.string "cnpj"
-    t.string "type"
+    t.string "institution_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
