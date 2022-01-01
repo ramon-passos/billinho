@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace :api do
     namespace :v1 do
-      resources :institutions, :students, :payments, :enrollments
+      resources :institutions, :students, :payments
+      resources :enrollments do
+        resources :payments
+      end
     end
   end
 end

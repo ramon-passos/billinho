@@ -37,7 +37,6 @@ class Api::V1::EnrollmentsController < Api::V1::ApiController
 
       payment_date = payment_date + 1.months
     end
-    #Criar as faturas de acordo com max_payments
     
     render json: @enrollment
   end

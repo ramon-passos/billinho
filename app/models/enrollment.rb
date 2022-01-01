@@ -1,7 +1,7 @@
 class Enrollment < ApplicationRecord
   belongs_to :institution
   belongs_to :student
-  has_many :payment, dependent: :destroy
+  has_many :payments, dependent: :destroy
   validates :full_price, presence: true
   validates :full_price, comparison: {greater_than: 0}
   validates :max_payments , presence: true
